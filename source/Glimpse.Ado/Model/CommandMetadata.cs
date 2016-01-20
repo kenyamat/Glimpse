@@ -106,6 +106,12 @@ namespace Glimpse.Ado.Model
         public bool IsDuplicate { get; set; }
 
         /// <summary>
+        /// Gets or sets duplicate count.
+        /// </summary>
+        /// <value>The duplicate count.</value>
+        public int DuplicateCount { get; set; }
+
+        /// <summary>
         /// Gets or sets whether the command was executed through
         /// the async API.
         /// </summary>

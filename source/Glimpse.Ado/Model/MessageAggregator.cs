@@ -74,7 +74,8 @@ namespace Glimpse.Ado.Model
                 // Duplicate tracking
                 var dupCount = 0;
                 command.IsDuplicate = dupTracker.TryGetValue(message.CommandText, out dupCount);
-                dupTracker[message.CommandText] = dupCount + 1; 
+                dupTracker[message.CommandText] = ++dupCount;
+                command.DuplicateCount = dupCount;
             }
         }
 

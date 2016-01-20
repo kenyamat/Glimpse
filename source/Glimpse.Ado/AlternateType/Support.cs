@@ -127,7 +127,7 @@ namespace Glimpse.Ado.AlternateType
                 command.MessageBroker.Publish(
                     new CommandDurationAndRowCountMessage(command.InnerConnection.ConnectionId, commandId, recordsAffected)
                     .AsTimedMessage(command.TimerStrategy.Stop(timer))
-                    .AsTimelineMessage("Command: Executed", AdoTimelineCategory.Command, type));
+                    .AsTimelineMessage("SQL: " + command.CommandText, AdoTimelineCategory.Command, type));
             }
         }
 

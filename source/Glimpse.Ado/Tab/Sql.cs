@@ -154,7 +154,8 @@ namespace Glimpse.Ado.Tab
                     var records = command.RecordsAffected == null || command.RecordsAffected < 0 ? command.TotalRecords : command.RecordsAffected;
 
                     var status = errors != null ? "error" : (command.IsDuplicate ? "warn" : string.Empty);
-                    commands.Add(new object[] { headTransaction, string.Format("{0}{1}", command.HasTransaction ? "\t\t\t" : string.Empty, commandCount++), sanitizer.Process(command.Command, command.Parameters), parameters, records, command.Duration, command.Offset, command.IsAsync, tailTransaction, errors, status });
+                    commands.Add(new object[] { headTransaction, string.Format("{0}{1}", command.HasTransaction ? "\t\t\t" : string.Empty, commandCount++), 
+                        sanitizer.Process(command.Command + "(" + command.DuplicateCount + ")", command.Parameters), parameters, records, command.Duration, command.Offset, command.IsAsync, tailTransaction, errors, status });
                 }
 
                 connections.Add(new[] { commands, connection.Duration.HasValue ? (object)connection.Duration.Value : null });
